@@ -1,6 +1,7 @@
-import {REHYDRATE} from 'redux-persist/constants'
+import ActionTypes from '../actionTypes'
+import initialState from '../initialState'
 
-const CartReducer = (state = defaultState, action) => {
+const cart = (state = initialState, action) => {
     const {type, payload} = action
     switch (type) {
       case ActionTypes.ADD_CART:
@@ -27,16 +28,9 @@ const CartReducer = (state = defaultState, action) => {
           ...state,
           cart: [...state.cart],
         }
-      case REHYDRATE:
-        return {
-          ...state,
-          ...payload.cart,
-          error: false,
-          reHydrated: true,
-        }
       default:
         return state
     }
 }
   
-export default CartReducer
+export default cart

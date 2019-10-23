@@ -1,40 +1,26 @@
 import React from 'react'
-import Layout from '../components/layout/struct'
+import Layout from '../components/layout'
 import ProductCard from '../components/product/card'
+import {loadingProducts} from '../redux/actions/products'
 
-const Home = () => (
+const Home = ({products}) => (
   <Layout>
-    <ProductCard 
-      photo={"https://product-avocado.storage.googleapis.com/images/7500435122283.png"}
-      title={"Fralda Pampers Confort Sec Pants XXG 16 un."}
-      price={2511}
-      id={"sHlfmIoYKRMal7qtwWfY"}
-    />
-    <ProductCard 
-      photo={"https://product-avocado.storage.googleapis.com/images/7500435122283.png"}
-      title={"Fralda Pampers Confort Sec Pants XXG 16 un."}
-      price={2511}
-      id={"sHlfmIoYKRMal7qtwWfY"}
-    />
-    <ProductCard 
-      photo={"https://product-avocado.storage.googleapis.com/images/7500435122283.png"}
-      title={"Fralda Pampers Confort Sec Pants XXG 16 un."}
-      price={2511}
-      id={"sHlfmIoYKRMal7qtwWfY"}
-    />
-    <ProductCard 
-      photo={"https://product-avocado.storage.googleapis.com/images/7500435122283.png"}
-      title={"Fralda Pampers Confort Sec Pants XXG 16 un."}
-      price={2511}
-      id={"sHlfmIoYKRMal7qtwWfY"}
-    />
-    <ProductCard 
-      photo={"https://product-avocado.storage.googleapis.com/images/7500435122283.png"}
-      title={"Fralda Pampers Confort Sec Pants XXG 16 un."}
-      price={2511}
-      id={"sHlfmIoYKRMal7qtwWfY"}
-    />
+    {products && products.map((product, key) => (
+      <ProductCard 
+        key={key}
+        photo={product.image_url}
+        title={product.name}
+        price={product.price}
+        id={product.id}
+      />
+    ))}
   </Layout>
 )
+
+Home.getInitialProps = async ({ reduxStore}) => {
+  await reduxStore.dispatch(loadingProducts());
+  const state = reduxStore.getState()
+  return { products: state.products }
+}
 
 export default Home

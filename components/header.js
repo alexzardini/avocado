@@ -1,6 +1,6 @@
 import React from 'react'
-import colors from '../src/utils/theme/colors'
-import fonts from '../src/utils/theme/fonts'
+import colors from '../utils/theme/colors'
+import fonts from '../utils/theme/fonts'
 
 const Header = () => (
     <React.Fragment>

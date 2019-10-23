@@ -9,16 +9,17 @@ const Layout = ({page, children}) => (
     <Head>
       <title>{page || "Avocado"}</title>
       <link rel='icon' href='/favicon.ico' />
-      <link rel='stylesheet' href='/style.css' />
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet"></link>
     </Head>
     <Header />
     <Content>
         {children}
     </Content>
 
-    <style jsx>{`
-      body {padding: 0; margin: 0 !important;}
-      div {padding: 0; margin: 0;}
+    <style jsx global>{`
+      body {margin: 0px;}
+      h1, h2, h3, h4, h5, h6, strong, b, a, p, span, i {font-family: 'Roboto'}
+      img { max-width: 100%; max-height: 100%; }
     `}</style>
   </div>
 )

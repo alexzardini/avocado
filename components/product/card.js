@@ -9,7 +9,7 @@ const ProductCard = ({id, handleClick, photo, title, price}) => (
             </div>
             <div className="description">
                 <Text>{title}</Text>
-                <p>R$ {price}</p>
+                <p>{(price / 100).toLocaleString("pt-BR", {style:"currency", currency:"BRL"})}</p>
             </div>
             <div className="action">
                <a onClick={() => handleClick(id)}>
@@ -19,7 +19,7 @@ const ProductCard = ({id, handleClick, photo, title, price}) => (
         </div>
         <style jsx>{`
             p {margin: 0;}
-            .photo { width: 90px;height: 90px; }
+            .photo { width: 90px;height: 90px;justify-content: center;display: flex; }
             .card {
                 margin-bottom: 15px;
                 display: flex;

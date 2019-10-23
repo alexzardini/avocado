@@ -8,8 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "firebase": "^7.2.1",
     "next": "9.1.1",
     "react": "16.10.2",
-    "react-dom": "16.10.2"
+    "react-dom": "16.10.2",
+    "react-redux": "^7.1.0",
+    "redux": "^3.6.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.3.0"
   }
 }
