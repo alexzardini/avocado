@@ -21,8 +21,6 @@ yarn && yarn run build && yarn start # for production
 
 ```bash
 yarn run test # test
-yarn run test:watch
-yarn run test:coverage # report coverage
 ```
 
 ### Development

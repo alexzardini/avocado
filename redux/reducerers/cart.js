@@ -5,10 +5,10 @@ const cart = (state = initialState, action) => {
     const {type, payload} = action
     switch (type) {
       case ActionTypes.ADD_CART:
-        return {
+        return [
           ...state,
-          cart: [...state.products[payload], ...state.cart],
-        }
+          ...product
+        ]
       case ActionTypes.REMOVE_CART:
         var copy = Object.assign([], state.cart)
         copy.splice(payload, 1)

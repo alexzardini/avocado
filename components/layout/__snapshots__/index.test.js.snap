@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`With Snapshot Testing Layout struct snapshot 1`] = `
+<div
+  className="jsx-2863305796 root"
+>
+  <header
+    className="jsx-2698932620"
+  >
+    <h2
+      className="jsx-2698932620"
+    >
+      Carrinho turbo
+    </h2>
+  </header>
+  <div
+    className="jsx-3180765612 container"
+  />
+</div>
+`;
+
+exports[`With Snapshot Testing Layout struct snapshot 2`] = `
+<div
+  className="jsx-2863305796 root"
+>
+  <header
+    className="jsx-2698932620"
+  >
+    <h2
+      className="jsx-2698932620"
+    >
+      Carrinho turbo
+    </h2>
+  </header>
+  <div
+    className="jsx-3180765612 container"
+  />
+</div>
+`;
