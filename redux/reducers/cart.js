@@ -23,7 +23,7 @@ const cart = (state = defaultState, action) => {
       case ActionTypes.REMOVE_CART:
         var index = state.data.findIndex(c => c.product_id === payload)
         if(index < 0) { return state }
-        var copy = Object.assign([], state.cart)
+        var copy = Object.assign([], state.data)
         copy.splice(index, 1)
         return {
           ...state,
