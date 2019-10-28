@@ -1,7 +1,7 @@
 import firebase from 'firebase'
-import ActionTypes from '../actionTypes'
+import ActionTypes from '@redux/actionTypes'
 
-export const loadingProducts = () => async dispatch => {
+export const loadingProducts = () => dispatch => {
     return firebase.firestore().collection('products').get().then(querySnapshot => {
         const data = querySnapshot.docs.map(doc => doc.data())
         dispatch({

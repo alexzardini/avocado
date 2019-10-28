@@ -1,10 +1,10 @@
 import React from 'react'
-import colors from '../../utils/theme/colors'
-import fonts from '../../utils/theme/fonts'
+import colors from 'utils/theme/colors'
+import fonts from 'utils/theme/fonts'
 
 
 const Text = ({variant = 'default', color = 'default', children}) => (
-    <React.Fragment>
+    <>
         <p className={`${variant} color-${color}`}>{children}</p>
         <style jsx>{`
             .default {
@@ -21,7 +21,7 @@ const Text = ({variant = 'default', color = 'default', children}) => (
                 color: ${colors.secondary};
             }
         `}</style>
-    </React.Fragment>
+    </>
 )
 
 export default Text

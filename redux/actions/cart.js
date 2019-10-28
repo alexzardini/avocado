@@ -1,29 +1,34 @@
-import ActionTypes from '../actionTypes'
+import ActionTypes from '@redux/actionTypes'
 
-export const addProductInCart = (id) => async dispatch => {
-    return dispatch({
+export const addProduct = (product) => async dispatch => {
+    const add = await dispatch({
           type: ActionTypes.ADD_CART,
-          payload: id,
+          payload: product,
+    })
+
+    return dispatch({
+        type: ActionTypes.SUCCESS_ADD,
+        payload: product.name
     })
 }
 
-export const removeProductInCart = (id) => async dispatch => {
+export const removeItem = (id) => dispatch => {
     return dispatch({
           type: ActionTypes.REMOVE_CART,
           payload: id,
     })
 }
 
-export const incrementProductInCart = (id) => async dispatch => {
+export const incrementItem = (id) => dispatch => {
     return dispatch({
-          type: ActionTypes.INCREMENT_PRODUCT,
+          type: ActionTypes.INCREMENT_ITEM,
           payload: id,
     })
 }
 
-export const decrementProductInCart = (id) => async dispatch => {
+export const decrementItem = (id) => dispatch => {
     return dispatch({
-          type: ActionTypes.DECREMENT_PRODUCT,
+          type: ActionTypes.DECREMENT_ITEM,
           payload: id,
     })
 }

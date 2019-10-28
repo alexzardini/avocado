@@ -1,33 +1,42 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import Layout from '../components/layout'
-import ProductCard from '../components/product/card'
-import {addProductInCart} from '../redux/actions/cart'
-import {loadingProducts} from '../redux/actions/products'
+import React, {useEffect, useState} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 
-const Home = ({products, addProduct}) => (
-  <Layout>
-    {products && products.map((product, key) => (
-      <ProductCard 
-        key={key}
-        photo={product.image_url}
-        title={product.name}
-        price={product.price}
-        id={product.id}
-        handleClick={addProduct}
-      />
-    ))}
-  </Layout>
-)
+import ProductCard from 'components/product/card'
+import {SearchBox} from 'components/struct'
+import Layout from 'components/layout'
+import {Content} from 'components/ui'
 
-Home.getInitialProps = async ({ reduxStore}) => {
-  await reduxStore.dispatch(loadingProducts());
-  const state = reduxStore.getState()
-  return { products: state.products }
+import {loadingProducts} from '@redux/actions/products'
+import {addProduct} from '@redux/actions/cart'
+
+const useFetching = (someFetchActionCreator, dispatch) => {
+  useEffect( () => {
+    dispatch(someFetchActionCreator())
+  }, [])
 }
 
-const mapDispatchToProps = dispatch => ({
-  addProduct: id => dispatch(addProductInCart(id)),
-})
 
-export default connect(null, mapDispatchToProps)(Home)
+export default function Home() {
+  const [search, setSearch] = useState();
+  const products = useSelector(state => state.products.data)
+
+  const dispatch = useDispatch()
+  useFetching(loadingProducts, dispatch)
+
+  return (
+    <Layout>
+      <SearchBox handleSearch={setSearch} />
+      <Content>
+        {products && products.filter(p => 
+            search ? p.name.indexOf(search) > -1 : true
+          ).map((product, key) => (
+          <ProductCard 
+            key={key}
+            product={product}
+            handleClick={addProduct}
+          />
+        ))}
+      </Content>
+    </Layout>
+  )
+}
