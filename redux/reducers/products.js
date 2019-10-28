@@ -22,7 +22,6 @@ export const products = (state = defaultState, action) => {
       case REHYDRATE:
         return {
           ...state,
-          ...payload.products,
           error: false,
           reHydrated: true,
         }

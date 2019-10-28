@@ -52,7 +52,6 @@ const cart = (state = defaultState, action) => {
       case REHYDRATE:
         return {
           ...state,
-          ...payload.cart,
           error: false,
           reHydrated: true,
         }
